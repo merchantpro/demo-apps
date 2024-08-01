@@ -8,8 +8,9 @@ $return_url = $_GET['return_url'];
 $client_id = "YOUR_APP_CLIENT_ID";
 $client_secret = "YOUR_APP_SECRET";
 
-// The URL to request a new app api-key
+// The URL to request api credentials for the app
 $url = "https://flex.merchantpro.com/oauth/install";
+
 // Request payload
 $payload = [
 	"client_id" => $client_id,
@@ -62,7 +63,8 @@ else {
 	[
 		"api_credentials" => $api_credentials,
 		"app" => $app,
-		"shop" => $shop,
+		"client_id" => $response_client_id,
+		"shop_key" => $shop_key,
 	] = json_decode($response, true);
 
 	// It is up to you to decide what to do with the api_credentials
@@ -82,7 +84,8 @@ else {
 				<div>
 					<b>api_credentials</b>: " . $formatResponse($api_credentials) . "
 					<b>app</b>: " . $formatResponse($app) . "
-					<b>shop</b>: " . $formatResponse($shop) . "
+					<b>client_id</b>: " . $client_id . "
+					<b>shop_key</b>: " . $shop_key . "
 				</div>
 				<a href=\"{$return_url}\">Return to the app</a>
 			</body>

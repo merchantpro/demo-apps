@@ -68,28 +68,28 @@ else {
 	] = json_decode($response, true);
 
 	// It is up to you to decide what to do with the api_credentials
-		// For this example we will display them in the browser
-		// And also add a button to return to the return_url
+	// For this example we will display them in the browser
+	// And also add a button to return to the return_url
 
 	$formatResponse = fn($data) => "<pre style=\"margin: 0.25rem 0 1.5rem;\">" . array_reduce(array_keys($data), fn($carry, $key) => $carry . "\t<u>{$key}</u>: {$data[$key]}\n", "") . "</pre>";
 
-		header("Content-Type: text/html");
+	header("Content-Type: text/html");
 
-		print "<html>
-		<head>
-		<title>App Install</title>
-		</head>
-			<body style=\"display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 1rem;\">
-				<h3>Install response</h3>
-				<div>
-					<b>api_credentials</b>: " . $formatResponse($api_credentials) . "
-					<b>app</b>: " . $formatResponse($app) . "
-					<b>client_id</b>: " . $client_id . "
-					<b>shop_key</b>: " . $shop_key . "
-				</div>
-				<a href=\"{$return_url}\">Return to the app</a>
-			</body>
-		</html>";
+	print "<html>
+	<head>
+	<title>App Install</title>
+	</head>
+		<body style=\"display: flex; flex-direction: column; align-items: center; gap: 1rem; font-size: 1rem;\">
+			<h3>Install response</h3>
+			<div>
+				<b>api_credentials</b>: " . $formatResponse($api_credentials) . "
+				<b>app</b>: " . $formatResponse($app) . "
+				<b>client_id</b>: " . $client_id . "
+				<b>shop_key</b>: " . $shop_key . "
+			</div>
+			<a href=\"{$return_url}\">Return to the app</a>
+		</body>
+	</html>";
 }
 
 // Close the cURL session

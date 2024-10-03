@@ -16,6 +16,9 @@ $payload = [
 	"client_id" => $client_id,
 	"client_secret" => $client_secret,
 	"code" => $code,
+	"config" => [
+		"partner_id" => uniqid(),
+	],
 ];
 
 // Initialize a cURL session
